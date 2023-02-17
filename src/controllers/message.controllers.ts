@@ -13,7 +13,7 @@ export default class MessageController {
         body.type,
         body.from,
         body.token,
-        body.to)
+        body.parameters.to)
         .then((responseSendMessageWhatsapp) => {
           new Promise((resolve, reject) => {
             if (body.idConversation != null) {

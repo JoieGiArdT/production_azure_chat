@@ -11,7 +11,7 @@ const port: number = (process.env.PORT != null) ? parseInt(process.env.PORT, 10)
 const ip: string = (process.env.IP != null) ? process.env.IP : 'localhost'
 
 app
-  .listen(port, 'localhost', function () {
+  .listen(port, ip, function () {
     console.info(`Server running on : http://${ip}:${port}`)
   })
   .on('error', (err: any) => {

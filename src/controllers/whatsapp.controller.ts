@@ -14,10 +14,10 @@ import { apiErrorHandler } from '../handlers/error.handler'
 export default class WhatsappController {
   verifyToken ({ query }: Request, res: Response): void {
     try {
-      const accessToken = String(process.env.TOKENA)
+      const accessToken = String(process.env.TOKEN)
       if (query['hub.challenge'] != null &&
-    String(query['hub.verify_token']) != null &&
-    String(query['hub.verify_token']) === accessToken) {
+        String(query['hub.verify_token']) != null &&
+        String(query['hub.verify_token']) === accessToken) {
         res.send(query['hub.challenge'])
       } else {
         res.status(400).send('VERIFICATION_FAILED')
@@ -71,7 +71,7 @@ export default class WhatsappController {
                 responseGetParameterForAnswerTask.parameters,
                 responseGetParameterForAnswerTask.type,
                 '113492004941110',
-                'EAAFlbvoSH6YBAI3wpJNLo5ZAtZCmoSnqqOEeIVoG5NZAqPznbdbMNPe9s5ndpLXqCuXf9zG57lX4qwrmNJNqPBZB7P8qX0G9pcMeWGd7eYDIvVKWQhbTRfWeQSNHonyeTRYfduhRObJgs4ejcfyGblCGZCyObLvlnMyZBDC4IhvvFXG381YfxocD1MbHQi0bQkbe82OfrAWQZDZD',
+                'EAAFlbvoSH6YBAMgP8cyLT7dGPGL4fpHPzPAwuMBjTg6kYdLHrnSUiHUdZC9coGUpnARY7YCKCOnnvTJlnjz7gFueZAkN9YUxO8U6RWNnbigel6SNuf9izhPaX7xC17cVquvWzzZAOSFhyP2xsXXF28E8ZC7WZAu4ZCYJ8GPd5EXMD0yyCPrvAM0tF2wxKuyUeZB00y8oa4yxAZDZD',
                 body.messages[0].from)
                 .then(() => {
                   res.send('EVENT_RECEIVED')
@@ -82,7 +82,7 @@ export default class WhatsappController {
               switch (responseGetTaskById[0].data().type_task) {
                 case 'Subir imagenes':{
                   whatsappService.getMediaMessage(
-                    'EAAFlbvoSH6YBAI3wpJNLo5ZAtZCmoSnqqOEeIVoG5NZAqPznbdbMNPe9s5ndpLXqCuXf9zG57lX4qwrmNJNqPBZB7P8qX0G9pcMeWGd7eYDIvVKWQhbTRfWeQSNHonyeTRYfduhRObJgs4ejcfyGblCGZCyObLvlnMyZBDC4IhvvFXG381YfxocD1MbHQi0bQkbe82OfrAWQZDZD',
+                    'EAAFlbvoSH6YBAMgP8cyLT7dGPGL4fpHPzPAwuMBjTg6kYdLHrnSUiHUdZC9coGUpnARY7YCKCOnnvTJlnjz7gFueZAkN9YUxO8U6RWNnbigel6SNuf9izhPaX7xC17cVquvWzzZAOSFhyP2xsXXF28E8ZC7WZAu4ZCYJ8GPd5EXMD0yyCPrvAM0tF2wxKuyUeZB00y8oa4yxAZDZD',
                     responseGetParameterForAnswerTask.id_image)
                     .then((image) => {
                       const fileName = String(responseGetParameterForAnswerTask.id_image) + '.' + String(image.headers['content-type'].substr(Number(image.headers['content-type'].indexOf('/')) + 1))
@@ -126,7 +126,7 @@ export default class WhatsappController {
                         responseGetParameterForAnswerTask.parameters,
                         responseGetParameterForAnswerTask.type,
                         '113492004941110',
-                        'EAAFlbvoSH6YBAI3wpJNLo5ZAtZCmoSnqqOEeIVoG5NZAqPznbdbMNPe9s5ndpLXqCuXf9zG57lX4qwrmNJNqPBZB7P8qX0G9pcMeWGd7eYDIvVKWQhbTRfWeQSNHonyeTRYfduhRObJgs4ejcfyGblCGZCyObLvlnMyZBDC4IhvvFXG381YfxocD1MbHQi0bQkbe82OfrAWQZDZD',
+                        'EAAFlbvoSH6YBAMgP8cyLT7dGPGL4fpHPzPAwuMBjTg6kYdLHrnSUiHUdZC9coGUpnARY7YCKCOnnvTJlnjz7gFueZAkN9YUxO8U6RWNnbigel6SNuf9izhPaX7xC17cVquvWzzZAOSFhyP2xsXXF28E8ZC7WZAu4ZCYJ8GPd5EXMD0yyCPrvAM0tF2wxKuyUeZB00y8oa4yxAZDZD',
                         body.messages[0].from)
                         .then(() => {
                           res.send('EVENT_RECEIVED')
